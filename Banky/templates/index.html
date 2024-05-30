@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Run Demo</title>
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-roboto">
+
+<!-- Container -->
+<div class="container mx-auto px-4 py-8">
+
+    <!-- Cloud Run Card -->
+    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+      
+        <div class="p-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-2">What is Cloud Run?</h2>
+            <p class="text-gray-700 text-lg mb-4">Cloud Run is a fully managed compute platform by Google Cloud that automatically scales your stateless containers.</p>
+        </div>
+    </div>
+
+    <!-- How to Use Cloud Run Card -->
+    <div class="bg-white shadow-lg rounded-lg overflow-hidden mt-8">
+        
+        <div class="p-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-2">How to Use Cloud Run?</h2>
+            <p class="text-gray-700 text-lg mb-4">1. Containerize your application using Docker.</p>
+            <p class="text-gray-700 text-lg mb-4">2. Deploy your container to Cloud Run using the Google Cloud Console or the Cloud SDK command-line tool.</p>
+        </div>
+    </div>
+
+    <!-- How to Deploy to Cloud Run Card -->
+    <div class="bg-white shadow-lg rounded-lg overflow-hidden mt-8">
+       
+        <div class="p-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-2">How to Deploy to Cloud Run?</h2>
+            <p class="text-gray-700 text-lg mb-4">1. Use the following command to deploy to Cloud Run:</p>
+            <code class="bg-gray-200 p-2 block rounded-md mb-4">gcloud run deploy [SERVICE_NAME] --image=[IMAGE_URL]</code>
+            <p class="text-gray-700 text-lg mb-4">2. Replace [SERVICE_NAME] with the name of your service and [IMAGE_URL] with the URL of your Docker image stored in a container registry like Google Container Registry.</p>
+        </div>
+    </div>
+
+    <!-- Contributor Section -->
+    <div class="text-center mt-8">
+        <p class="text-gray-600">Contributed by <a href="https://www.linkedin.com/in/yashkavaiya/" class="text-blue-500">Yash Kavaiya</a></p>
+    </div>
+
+</div> <!-- End Container -->
+
+</body>
+</html>
