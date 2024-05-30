@@ -1,193 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Google Vertex AI Hackathon Project: Banky</title>
-   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans">
-   <style>
-       /* Google Sans font */
-       body {
-           font-family: 'Google Sans', sans-serif;
-       }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Vertex AI Hackathon Project: Banky</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans">
+  <style>
+    /* Google Sans font */
+    body {
+      font-family: 'Google Sans', sans-serif;
+    }
 
-       /* Google color palette */
-       :root {
-           --google-blue: #4285F4;
-           --google-red: #EA4335;
-           --google-yellow: #FBBC05;
-           --google-green: #34A853;
-           --google-gray: #5F6368;
-       }
+    /* Google color palette */
+    :root {
+      --google-blue: #4285F4;
+      --google-red: #EA4335;
+      --google-yellow: #FBBC05;
+      --google-green: #34A853;
+      --google-gray: #5F6368;
+    }
 
-       /* Dark mode styles */
-       body.dark-mode {
-           background-color: #202124;
-           color: #e8eaed;
-       }
+    /* Dark mode styles */
+    body.dark-mode {
+      background-color: #202124;
+      color: #e8eaed;
+    }
 
-       .dark-mode .card {
-           background-color: #292a2d;
-           color: #e8eaed;
-       }
+    .dark-mode .card {
+      background-color: #292a2d;
+      color: #e8eaed;
+    }
 
-       .dark-mode .hero {
-           background-color: #292a2d;
-           color: #e8eaed;
-       }
+    .dark-mode .hero {
+      background-color: #292a2d;
+      color: #e8eaed;
+    }
 
-       /* Light mode styles */
-       body.light-mode {
-           background-color: #ffffff;
-           color: #202124;
-       }
+    /* Light mode styles */
+    body.light-mode {
+      background-color: #ffffff;
+      color: #202124;
+    }
 
-       .light-mode .card {
-           background-color: #ffffff;
-           color: #202124;
-       }
+    .light-mode .card {
+      background-color: #ffffff;
+      color: #202124;
+    }
 
-       .light-mode .hero {
-           background-color: #f1f3f4;
-           color: #202124;
-       }
+    .light-mode .hero {
+      background-color: #f1f3f4;
+      color: #202124;
+    }
 
-       /* General styles */
-       .container {
-           max-width: 1200px;
-           margin: 0 auto;
-           padding: 20px;
-       }
+    /* General styles */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
 
-       .hero {
-           padding: 40px;
-           text-align: center;
-           border-radius: 8px;
-       }
+    .hero {
+      padding: 40px;
+      text-align: center;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--google-blue), var(--google-red));
+      color: #ffffff;
+    }
 
-       .card {
-           padding: 20px;
-           border-radius: 8px;
-           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-           margin-bottom: 20px;
-       }
+    .card {
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      transition: transform 0.3s ease-in-out;
+    }
 
-       .bento {
-           display: grid;
-           grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-           grid-gap: 20px;
-       }
+    .card:hover {
+      transform: translateY(-5px);
+    }
 
-       .mode-toggle {
-           position: fixed;
-           top: 20px;
-           right: 20px;
-           border: none;
-           cursor: pointer;
-       }
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-gap: 20px;
+    }
 
-       .mode-toggle .slider {
-           position: relative;
-           display: inline-block;
-           width: 40px;
-           height: 20px;
-           background-color: var(--google-gray);
-           border-radius: 10px;
-           transition: background-color 0.3s ease;
-       }
+    .mode-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      border: none;
+      cursor: pointer;
+    }
 
-       .mode-toggle .slider:before {
-           content: "";
-           position: absolute;
-           width: 16px;
-           height: 16px;
-           left: 2px;
-           bottom: 2px;
-           background-color: #ffffff;
-           border-radius: 50%;
-           transition: transform 0.3s ease;
-       }
+    .mode-toggle .slider {
+      position: relative;
+      display: inline-block;
+      width: 40px;
+      height: 20px;
+      background-color: var(--google-gray);
+      border-radius: 10px;
+      transition: background-color 0.3s ease;
+    }
 
-       .light-mode .mode-toggle .slider {
-           background-color: var(--google-blue);
-       }
+    .mode-toggle .slider:before {
+      content: "";
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      left: 2px;
+      bottom: 2px;
+      background-color: #ffffff;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
 
-       .dark-mode .mode-toggle .slider {
-           background-color: var(--google-yellow);
-       }
+    .light-mode .mode-toggle .slider {
+      background-color: var(--google-blue);
+    }
 
-       .dark-mode .mode-toggle .slider:before {
-           transform: translateX(20px);
-       }
+    .dark-mode .mode-toggle .slider {
+      background-color: var(--google-yellow);
+    }
 
-       .feature-icon {
-           font-size: 48px;
-           margin-bottom: 10px;
-           color: var(--google-blue);
-       }
+    .dark-mode .mode-toggle .slider:before {
+      transform: translateX(20px);
+    }
 
-       .light-mode .feature-icon {
-           color: var(--google-blue);
-       }
+    .feature-icon {
+      font-size: 48px;
+      margin-bottom: 10px;
+      color: var(--google-blue);
+    }
 
-       .dark-mode .feature-icon {
-           color: var(--google-yellow);
-       }
-   </style>
+    .light-mode .feature-icon {
+      color: var(--google-blue);
+    }
+
+    .dark-mode .feature-icon {
+      color: var(--google-yellow);
+    }
+
+    /* Award-winning styles */
+    .award {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .award-icon {
+      font-size: 48px;
+      color: gold;
+      margin-right: 10px;
+    }
+
+    .award-text {
+      font-size: 24px;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body class="light-mode">
-   <div class="container">
-       <div class="hero">
-           <h1>Banky: Your AI-Powered Banking Assistant</h1>
-           <p>Revolutionizing the banking experience with Google Vertex AI.</p>
-       </div>
-       <div class="bento">
-           <div class="card">
-               <span class="feature-icon">&#128188;</span>
-               <h2>Customer Support</h2>
-               <p>Address common banking queries, check account balances, view transaction histories, and locate branches with ease.</p>
-           </div>
-           <div class="card">
-               <span class="feature-icon">&#128200;</span>
-               <h2>Investment Advice</h2>
-               <p>Get personalized investment recommendations based on your goals, risk tolerance, and preferences.</p>
-           </div>
-           <div class="card">
-               <span class="feature-icon">&#128273;</span>
-               <h2>User Authentication</h2>
-               <p>Secure access through phone number and passcode verification.</p>
-           </div>
-           <div class="card">
-               <span class="feature-icon">&#128172;</span>
-               <h2>Interactive Assistance</h2>
-               <p>Engage with Banky through natural language processing for efficient and intuitive interactions.</p>
-           </div>
-       </div>
-       <div class="card">
-           <h2>About Banky</h2>
-           <p>Banky is an AI-powered banking assistant developed during the Google Vertex AI Hackathon. It leverages cutting-edge natural language processing and machine learning models to provide personalized financial advice, customer support, and secure banking services. With Banky, users can seamlessly manage their finances, receive tailored investment recommendations, and enjoy a revolutionized banking experience.</p>
-       </div>
-       <div class="card">
-           <h2>Key Technologies</h2>
-           <ul>
-               <li><span class="feature-icon" style="font-size: 24px; vertical-align: middle;">&#9989;</span> Google Cloud Vertex AI</li>
-               <li><span class="feature-icon" style="font-size: 24px; vertical-align: middle;">&#9989;</span> Dialogflow CX</li>
-               <li><span class="feature-icon" style="font-size: 24px; vertical-align: middle;">&#9989;</span> Google Cloud Functions</li>
-               <li><span class="feature-icon" style="font-size: 24px; vertical-align: middle;">&#9989;</span> Firebase</li>
-               <li><span class="feature-icon" style="font-size: 24px; vertical-align: middle;">&#9989;</span> Python and Flask</li>
-           </ul>
-       </div>
-   </div>
-   <div class="mode-toggle">
-       <div class="slider" onclick="toggleMode()"></div>
-   </div>
+  <div class="container">
+    <div class="award">
+      <span class="award-icon">&#127942;</span>
+      <span class="award-text">Google Hackathon Award Winner</span>
+    </div>
+    <div class="hero">
+      <h1>Banky: Your AI-Powered Banking Assistant</h1>
+      <p>Revolutionizing the banking experience with Google Vertex AI.</p>
+    </div>
+    <div class="bento">
+      <div class="card">
+        <span class="feature-icon">&#128188;</span>
+        <h2>Customer Support</h2>
+        <p>Address common banking queries, check account balances, view transaction histories, and locate branches with ease.</p>
+      </div>
+      <div class="card">
+        <span class="feature-icon">&#128200;</span>
+        <h2>Investment Advice</h2>
+        <p>Get personalized investment recommendations based on your goals, risk tolerance, and preferences.</p>
+      </div>
+      <div class="card">
+        <span class="feature-icon">&#128273;</span>
+        <h2>User Authentication</h2>
+        <p>Secure access through phone number and passcode verification.</p>
+      </div>
+      <div class="card">
+        <span class="feature-icon">&#128172;</span>
+        <h2>Interactive Assistance</h2>
+        <p>Engage with Banky through natural language processing for efficient and intuitive interactions.</p>
+      </div>
+    </div>
+    <div class="card">
+      <h2>About Banky</h2>
+      <p>Banky is an AI-powered banking assistant developed during the Google Vertex AI Hackathon. It leverages cutting-edge natural language processing and machine learning models to provide personalized financial advice, customer support, and secure banking services. With Banky, users can seamlessly manage their finances, receive tailored investment recommendations, and enjoy a revolutionized banking experience.</p>
+    </div>
+    <div class="card">
+      <h2>Key Technologies</h2>
+      <ul>
+        <li><span class="feature-icon" style="font-size: 24px; vertical-align: middle;">&#9989;</span> Google Cloud Vertex AI</li>
+        <li><span class="feature-icon" style="font-size: 24px; vertical-align: middle;">&#9989;</span> Dialogflow CX</li>
+        <li><span class="feature-icon" style="font-size: 24px; vertical-align: middle;">&#9989;</span> Google Cloud Functions</li>
+        <li><span class="feature-icon" style="font-size: 24px; vertical-align: middle;">&#9989;</span> Firebase</li>
+        <li><span class="feature-icon" style="font-size: 24px; vertical-align: middle;">&#9989;</span> Python and Flask</li>
+      </ul>
+    </div>
+  </div>
+  <div class="mode-toggle">
+    <div class="slider" onclick="toggleMode()"></div>
+  </div>
 
-   <script>
-       function toggleMode() {
-           const body = document.body;
-           body.classList.toggle('dark-mode');
-           body.classList.toggle('light-mode');
-       }
-   </script>
+  <script>
+    function toggleMode() {
+      const body = document.body;
+      body.classList.toggle('dark-mode');
+      body.classList.toggle('light-mode');
+    }
+  </script>
 </body>
 </html>
