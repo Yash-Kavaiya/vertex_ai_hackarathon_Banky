@@ -178,8 +178,11 @@
   language-code="en"
   max-query-length="-1">
   <df-messenger-chat-bubble
-   chat-title="Banky">
-  </df-messenger-chat-bubble>
+   chat-title="Banky"
+   chat-subtitle="Your AI Assistant"
+   bot-writing-text="Banky is typing..."
+   placeholder-text="Ask me anything!"
+   chat-width="1200px" >
 </df-messenger>
 <style>
   df-messenger {
@@ -192,6 +195,7 @@
     --df-messenger-message-bot-background: rgba(255, 255, 255, 0.1); /* Semi-transparent white background for bot messages */
     --df-messenger-button-color: #ffffff; /* White color for buttons */
     --df-messenger-button-color-hover: rgba(255, 255, 255, 0.8); /* Semi-transparent white color for button hover state */
+    
     bottom: 16px;
     right: 16px;
 
