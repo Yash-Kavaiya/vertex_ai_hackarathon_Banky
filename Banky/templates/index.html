@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Google Vertex AI Hackathon Project: Banky</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans">
+  <link rel="stylesheet" href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css">
+<script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script>
   <style>
     /* Google Sans font */
     body {
@@ -169,6 +171,7 @@
     h1, h2 {
       margin: 0;
     }
+    
   </style>
 
 <df-messenger
@@ -178,22 +181,24 @@
   max-query-length="-1">
   <df-messenger-chat-bubble
    chat-title="Banky"
-   chat-subtitle="Your Banky AI Assistant"
-   bot-writing-text="Banky is thinking....."
+   chat-width="800px"
+   chat-subtitle="Your Bank AI Assistant"
+   bot-writing-text="Banky is thinking..."
    placeholder-text="Ask me anything!"
-   chat-width="1200px" >
+   df-messenger-chat-window-width="500px" >
 </df-messenger>
 <style>
   df-messenger {
     z-index: 999;
     position: fixed;
-    --df-messenger-font-color: #ffffff; /* White text color */
+    --df-messenger-font-color: #000000; /*White text color */
     --df-messenger-font-family: 'Roboto', sans-serif; /* Roboto font */
-    --df-messenger-chat-background: linear-gradient(135deg, #6a11cb, #2575fc); /* Gemini gradient background */
+    --df-messenger-chat-background: linear-gradient(135deg, #4683ef, #eff5ff); /* Gemini gradient background */
     --df-messenger-message-user-background: rgba(255, 255, 255, 0.84); /* Semi-transparent white background for user messages */
-    --df-messenger-message-bot-background: #da8c05da(255, 255, 255, 0.932); /* Semi-transparent white background for bot messages */
+    --df-messenger-message-bot-background: #ffffffda(255, 255, 255, 0.932); /* Semi-transparent white background for bot messages */
     --df-messenger-button-color: #ffffff; /* White color for buttons */
     --df-messenger-button-color-hover: rgba(10, 1, 1, 0.8); /* Semi-transparent white color for button hover state */
+    --df-messenger-chat-border-radius:25px;
     bottom: 16px;
     right: 16px;
   }
