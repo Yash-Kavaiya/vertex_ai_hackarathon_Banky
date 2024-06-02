@@ -12,6 +12,8 @@ Banky is an AI-powered banking assistant designed to handle a variety of banking
 - **User Authentication:** Ensuring secure access by verifying user identity through phone numbers and passcodes.
 - **Interactive Assistance:** Engaging with users through natural language processing to understand and respond to their needs efficiently.
 
+![Arch](flowchart.png)
+
 ## How we built it
 We built Banky using the following technologies and tools:
 - **Google Cloud Vertex AI:** For developing and deploying machine learning models that power Banky's natural language processing and decision-making capabilities.
@@ -19,12 +21,14 @@ We built Banky using the following technologies and tools:
 - **Google Cloud Functions:** For backend integration, handling user authentication, and fetching data from banking systems.
 - **Python and Flask:** For developing server-side logic and integrating various components of the application.
 ![Arch](./Architecture.png)
+
 ## Challenges we ran into
 - **Data Security:** Ensuring that user data is handled securely and in compliance with financial regulations.
 - **Natural Language Understanding:** Training the AI to accurately understand and respond to a wide range of user queries and intents.
 - **Integration with Banking Systems:** Seamlessly integrating Banky with existing banking infrastructure and APIs to provide real-time information and services.
 - **Personalization:** Balancing the need for personalized advice with the privacy concerns of users, ensuring data is used responsibly.
 ![Arch](sequence%20diagram.png)
+
 ## Accomplishments that we're proud of
 - **Seamless Integration:** Successfully integrating multiple technologies to create a cohesive and responsive AI assistant.
 - **User-Centric Design:** Developing an intuitive interface that makes banking tasks simpler and more accessible for users.
