@@ -7,28 +7,43 @@ a seamless experience to customers.
 
 Live Demo link :- https://vertex-ai-hackarathon-banky-u3koza3sxa-uc.a.run.app
 
+Video Demo Link :- https://youtu.be/1Wx078jAplg
+
 ## What it does
 Banky is an AI-powered banking assistant designed to handle a variety of banking tasks and provide personalized financial advice. Key features include:
+
 - **Customer Support:** Addressing common banking queries such as checking account balances, viewing transaction histories, and locating branches.
+
 - **Investment Advice:** Gathering user information to offer tailored investment recommendations based on their goals, risk tolerance, and preferences.
+
 - **User Authentication:** Ensuring secure access by verifying user identity through phone numbers and passcodes.
+
 - **Interactive Assistance:** Engaging with users through natural language processing to understand and respond to their needs efficiently.
 
 ![Arch](flowchart.png)
 
 ## How we built it
 We built Banky using the following technologies and tools:
+
 - **Google Cloud Vertex AI:** For developing and deploying machine learning models that power Banky's natural language processing and decision-making capabilities.
+
 - **Dialogflow CX:** To create an intuitive conversational interface that handles user interactions and routes queries to appropriate intents.
+
 - **Google Cloud Functions:** For backend integration, handling user authentication, and fetching data from banking systems.
+
 - **Python and Flask:** For developing server-side logic and integrating various components of the application.
+
 ![Arch](./Architecture.png)
 
 ## Challenges we ran into
 - **Data Security:** Ensuring that user data is handled securely and in compliance with financial regulations.
+
 - **Natural Language Understanding:** Training the AI to accurately understand and respond to a wide range of user queries and intents.
+
 - **Integration with Banking Systems:** Seamlessly integrating Banky with existing banking infrastructure and APIs to provide real-time information and services.
+
 - **Personalization:** Balancing the need for personalized advice with the privacy concerns of users, ensuring data is used responsibly.
+
 ![Arch](sequence%20diagram.png)
 
 ## Accomplishments that we're proud of
